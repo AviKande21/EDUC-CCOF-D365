@@ -26,6 +26,29 @@ CCOF.AdjudicationCCFRIFacility.Form = {
 		formContext.getAttribute("ccof_afcconfirmedbycommittee").addOnChange(onChange_confirmedbyconfirmedbycommittee);
 		formContext.getAttribute("ccof_afcsenttoexecutive").addOnChange(onChange_senttoexecutive);
 		formContext.getAttribute("ccof_afcreviewedbyexecutive").addOnChange(onChange_reviewedbyexecutive);
+		
+		formContext.getAttribute("ccof_newmodifiedfacilityrecommendation").addOnChange(onChange_facilityRecommendation);
+		formContext.getAttribute("ccof_newmodifiedfacilityqcdecision").addOnChange(onChange_facilityQcDecision);
+		formContext.getAttribute("ccof_closureadjudicatorrecommendationnotes").addOnChange(onChange_closureAdjudicatorRecommendationNotes);
+		formContext.getAttribute("ccof_ccfripaymenteligibilitystartdate").addOnChange(onChange_paymentEligibilityStartDate);
+		formContext.getAttribute("ccof_ccfriadjudicatorrecommendation").addOnChange(onChange_adjuducatorRecommendation);
+		formContext.getAttribute("ccof_temporaryapprovalstartdate").addOnChange(onChange_temporaryApprovalStartDate);
+		formContext.getAttribute("ccof_temporaryapprovalunitthisdate").addOnChange(onChange_temporaryApprovalUnitThisDate);
+		formContext.getAttribute("ccof_afcoccurred").addOnChange(onChange_AFCOccurred);
+		formContext.getAttribute("ccof_ccfriqcdecision").addOnChange(onChange_CCFRIQCDecision);
+		formContext.getAttribute("ccof_ccfripreapproval").addOnChange(onChange_CCFRIPreApproval);
+		formContext.getAttribute("ccof_unapproved_mtfi_followup_required").addOnChange(onChange_unapprovedMTFIFollowUpRequired);
+
+
+		formContext.getAttribute("ccof_mtfi_requested").addOnChange(onChange_mtfi_requested);
+		formContext.getAttribute("ccof_mtfimonthofincrease").addOnChange(onChange_mtfimonthofincrease);
+		formContext.getAttribute("ccof_mtfi_faciityrecommendation").addOnChange(onChange_mtfi_faciityrecommendation);
+		formContext.getAttribute("ccof_mtfi_facilityqcdecision").addOnChange(onChange_mtfi_facilityqcdecision);
+		formContext.getAttribute("ccof_mtfi_adjudicatorrecommendation").addOnChange(onChange_mtfi_adjudicatorrecommendation);
+		formContext.getAttribute("ccof_mtfi_qcdecision").addOnChange(onChange_mtfi_qcdecision);
+		formContext.getAttribute("ccof_mtfi_afc_occurred").addOnChange(onChange_AFC_Ouccured);
+		
+
 		//
 		//var tabMonthAdjudication = formContext.ui.tabs.get("MonthAdjudication");
 		//tabMonthAdjudication.addTabStateChange(refreshMedianGrid(executionContext));
@@ -97,6 +120,15 @@ function HideAdjudicatorRecommendationOptions(executionContext) {
 	if (today > limitDate) {
 		formContext.getControl("ccof_adjudicatorrecommendation").removeOption(100000010); //Stage 2 (NOM)
 		formContext.getControl("ccof_adjudicatorrecommendation").removeOption(100000011); //Stage 2 (MED)
+
+		formContext.getControl("ccof_ccfriqcdecision").removeOption(100000003); //Stage 2 (NOM)
+		formContext.getControl("ccof_ccfriqcdecision").removeOption(100000004); //Stage 2 (MED)		
+
+		formContext.getControl("ccof_nom").setVisible(false);
+		formContext.getControl("ccof_medallowance").setVisible(false);
+		formContext.getControl("ccof_hst").setVisible(false);
+		formContext.getControl("ccof_foryears").setVisible(false);
+
 	}
 }
 
@@ -116,6 +148,69 @@ function onChange_senttoexecutive(executionContext) {
 function onChange_reviewedbyexecutive(executionContext) {
 	setUserAndDate(executionContext, "ccof_afc_updatedbyreviewedbyexecutive", "ccof_afc_updatedonreviewedbyexecutive");
 }
+
+function onChange_facilityRecommendation(executionContext) {
+	setUserAndDate(executionContext, "ccof_decision_updatedby_facilityrecommendation", "ccof_decision_updatedon_facilityrecommendation");
+}
+function onChange_facilityQcDecision(executionContext) {
+	setUserAndDate(executionContext, "ccof_decision_updatedby_facilityqcdecision", "ccof_decision_updatedon_facilityqcdecision");
+}
+function onChange_closureAdjudicatorRecommendationNotes(executionContext) {
+	setUserAndDate(executionContext, "ccof_decision_updatedby_closureadjrecnotes", "ccof_decision_updatedon_closureadjrecnotes");
+}
+function onChange_paymentEligibilityStartDate(executionContext) {
+	setUserAndDate(executionContext, "ccof_dec_updatedby_ccfripayeligibilitystart", "ccof_ccof_dec_updatedon_ccfripayeligibilitysta");
+}
+function onChange_adjuducatorRecommendation(executionContext) {
+	setUserAndDate(executionContext, "ccof_decision_updatedby_ccfriadjudicatorrec", "ccof_decision_updatedonccfriadjudicatorrec");
+}
+function onChange_temporaryApprovalStartDate(executionContext) {
+	setUserAndDate(executionContext, "ccof_decision_updatedbytempapprovalstart", "ccof_decision_updatedon_tempapprovalstart");
+}
+function onChange_temporaryApprovalUnitThisDate(executionContext) {
+	setUserAndDate(executionContext, "ccof_decision_updatedbytempapprovalunitdate", "ccof_decision_updatedontempapprovalunitdate");
+}
+function onChange_AFCOccurred(executionContext) {
+	setUserAndDate(executionContext, "ccof_decision_updatedby_afcoccurred", "ccof_decision_updatedonafcoccurred");
+}
+function onChange_CCFRIQCDecision(executionContext) {
+	setUserAndDate(executionContext, "ccof_decision_updatedbyccfriqcdecision", "ccof_decision_updatedonccfriqcdecision");
+}
+function onChange_CCFRIPreApproval(executionContext) {
+	setUserAndDate(executionContext, "ccof_decision_updatedbyccfripreapproval", "ccof_decision_updatedonccfripreapproval");
+}
+function onChange_unapprovedMTFIFollowUpRequired(executionContext) {
+	setUserAndDate(executionContext, "ccof_decision_updatedbyunapprovedmtfifollowup", "ccof_decision_updatedonunapprovemtfifollowup");
+}
+
+function onChange_mtfi_requested(executionContext) {
+	setUserAndDate(executionContext, "ccof_mtfi_updatedbymtfirequested", "ccof_mtfi_updatedonmtfirequested");
+}
+function onChange_mtfimonthofincrease(executionContext) {
+	setUserAndDate(executionContext, "ccof_mtfi_updatedbymtfimonthofincrease", "ccof_mtfi_updatedonmtfimonthofincrease");
+}
+function onChange_mtfi_faciityrecommendation(executionContext) {
+	setUserAndDate(executionContext, "ccof_mtfi_updatedbyfaciityrecommendation", "ccof_mtfi_updatedonfaciityrecommendation");
+}
+function onChange_mtfi_facilityqcdecision(executionContext) {
+	setUserAndDate(executionContext, "ccof_mtfi_updatedbyfacilityqcdecision", "ccof_mtfi_updatedonmfacilityqcdecision");
+}
+function onChange_mtfi_adjudicatorrecommendation(executionContext) {
+	setUserAndDate(executionContext, "ccof_mtfi_updatedbyadjudicatorrecommendation", "ccof_mtfi_updatedonadjudicatorrecommendation");
+}
+function onChange_mtfi_qcdecision(executionContext) {
+	setUserAndDate(executionContext, "ccof_mtfi_updatedbyqcdecision", "ccof_mtfi_updatedonqcdecision");
+
+function onChange_AFC_Ouccured(executionContext) {
+		setUserAndDate(executionContext, "ccof_mtfi_updatedbyafcoccurred", "ccof_mtfi_updatedonafcoccurred");
+
+}
+
+
+
+
+
+
 
 //Get the current user and Date Now
 function setUserAndDate(executionContext, userField, dateField) {
