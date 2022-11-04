@@ -106,17 +106,9 @@ namespace CCOF.Infrastructure.WebAPI.Controllers
                     var statusCode = 1; // Current Program Year
                     var records = root.Last().ToList();
                     var applicationId = records[0][0]["Application.ccof_applicationid"]; // Latest Application
-                    if (applicationId != null)
-                    {
-                        var values = records[0].Where(t => (string)t["Application.ccof_applicationid"] == applicationId.ToString());
-                        return Ok(values);
-
-                    }                                                                     // var values = records[0].Where(t => (int?)t["ProgramYear.statuscode"] == statusCode);
-                    else
-                    {
-                        // var values = records[0].Where(t => (string)t["Application.ccof_applicationid"] == "");
-                        return Ok(records[0]);
-                    }
+                                                                                         // var values = records[0].Where(t => (int?)t["ProgramYear.statuscode"] == statusCode);
+                    var values = records[0].Where(t => (string)t["Application.ccof_applicationid"] == applicationId.ToString());
+                    return Ok(values);
                 }
                 else {
                     return Ok(response.Content.ReadAsStringAsync().Result);
